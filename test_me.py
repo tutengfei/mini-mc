@@ -11,13 +11,16 @@ This resembles Section 2.4 of the DART paper (PLDI'05).
 
 from mc import *
 
+
 def test_me(x, y):
-  z = 2 * x
-  if z == y:
-    if y == x + 10:
-      assert False
+    z = 2 * x
+    if z == y:
+        if y == x + 10:
+            # print("[%s], I am got it!" % (os.getpid()))
+            assert False
+
 
 x = BitVec("x", 32)
 y = BitVec("y", 32)
-test_me(x, y)
-#mc_fuzz(lambda: test_me(x, y), [x, y], [0, 0])
+# test_me(x, y)
+mc_fuzz(lambda: test_me(x, y), [x, y], [10, 0])

@@ -11,14 +11,17 @@ This resembles Figure 11 of the KLEE paper (OSDI'08).
 
 from mc import *
 
+
 def mod_opt(x, y):
-  if y & (-y) == y:
-    return x & (y - 1)
-  else:
-    return x % y
+    if y & (-y) == y:
+        return x & (y - 1)
+    else:
+        return x % y
+
 
 def mod(x, y):
-  return x % y
+    return x % y
+
 
 # Z3 is not very happy with n = 32
 n = 16
